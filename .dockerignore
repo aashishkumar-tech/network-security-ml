@@ -1,0 +1,65 @@
+# Docker ignore file - Exclude unnecessary files from Docker image
+
+# Virtual Environment
+
+venv/
+env/
+ENV/
+
+# Python Cache
+
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+# IDE
+
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Git
+
+.git/
+.gitignore
+
+# Environment files (use --env-file instead)
+
+.env
+.env.local
+.env.*.local
+
+# Logs (will be generated in container)
+
+logs/
+*.log
+
+# Training artifacts (large, should be generated or mounted)
+
+Artifacts/
+
+# Documentation
+
+projectdoc/
+*.md
+!README.md
+
+# OS files
+
+.DS_Store
+Thumbs.db
+
+# Testing
+
+.pytest_cache/
+.coverage
+htmlcov/
+test_*.py
+
+# Temporary files
+
+*.tmp
+*.bak

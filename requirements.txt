@@ -11,6 +11,8 @@ dagshub
 fastapi
 uvicorn
 python-multipart
-
+scipy
+pyyaml
+jinja2
 
 ##-e .

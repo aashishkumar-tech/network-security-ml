@@ -1,0 +1,35 @@
+version: "3.8"
+
+services:
+  network-security:
+    build: .
+    image: network-security:latest
+    container_name: network-security-app
+    ports:
+      - "8000:8000"
+    environment:
+      - MONGO_DB_URL=${MONGO_DB_URL}
+      - MONGODB_URL_KEY=${MONGODB_URL_KEY}
+      - DOCKER_ENV=true
+    env_file:
+      - .env
+    volumes:
+      # Persist model files
+      - ./final_model:/app/final_model
+      # Persist logs
+      - ./logs:/app/logs
+      # Persist prediction outputs
+      - ./prediction_output:/app/prediction_output
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/docs"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    networks:
+      - network-security-net
+
+networks:
+  network-security-net:
+    driver: bridge
